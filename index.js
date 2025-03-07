@@ -14,7 +14,7 @@ class Player {
 
     draw() {
         const playerDiv = document.createElement('div')
-        playerDiv.setAttribute("id", "mainPlayer")
+        playerDiv.setAttribute("id", "mainPlayer2")
         playerDiv.style.backgroundColor = "red"
         
         

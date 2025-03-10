@@ -43,16 +43,17 @@ class Player {
  }
  requestAnimationFrame(animiate)
 
+ const platformImageWidth = 580
+ const platformImageHeight = 125
 class Platform {
-    constructor({x, y, image}){
+    constructor({x, y}){
         this.position = {
             x,
             y
         }
         
-        this.image = image
-        this.width = image.width
-        this.height = image.height
+        this.width = platformImageWidth
+        this.height = platformImageHeight
      }
     
    draw() {
@@ -69,8 +70,8 @@ class Platform {
     }
 }
 
-    const platforms = Platform[new Platform({x:platformImage.width-3, y: 475, image: platformImage}),
-         new Platform({x: platformImage.width*2 +100, y: 475, image: platformImage})];
+    const platforms = Platform[new Platform({x:platformImageWidth-3, y: 475}),
+         new Platform({x: platformImageWidth*2 +100, y: 475})];
      
    
     platforms.forEach((platform) => {

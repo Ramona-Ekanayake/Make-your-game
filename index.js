@@ -24,27 +24,27 @@ class Player {
         playerDiv.style.top = this.position.y + "px";
         playerDiv.style.width = this.width + "px";
         playerDiv.style.height = this.height + "px";
-
+        
         document.body.appendChild(playerDiv)
     }
-
+    
     updateYPosition() {
         this.position.y += this.velocity.y
         this.draw()
     }
 }
 
- const player = new Player()
- player.draw()
+const player = new Player()
+player.draw()
 
 
- const animiate = () => {
+const animiate = () => {
     
- }
- requestAnimationFrame(animiate)
+}
+requestAnimationFrame(animiate)
 
- const platformImageWidth = 580
- const platformImageHeight = 125
+const platformImageWidth = 580
+const platformImageHeight = 125
 class Platform {
     constructor({x, y}){
         this.position = {
@@ -54,9 +54,9 @@ class Platform {
         
         this.width = platformImageWidth
         this.height = platformImageHeight
-     }
+    }
     
-   draw() {
+    draw() {
         let platformDiv = document.createElement('div')
         platformDiv.setAttribute("id", "platform")
         platformDiv.style.position = "absolute"; 
@@ -64,34 +64,30 @@ class Platform {
         platformDiv.style.top = this.position.y + "px";
         platformDiv.style.width = this.width + "px";
         platformDiv.style.height = this.height + "px";
-        platformDiv.style.backgroundImage = `url(image/platform.png})`;
+        platformDiv.style.backgroundImage = `url(image/platform.png)`;
         platformDiv.style.backgroundSize = 'cover';
         document.body.appendChild(platformDiv)
     }
 }
 
-    const platforms = Platform[new Platform({x:platformImageWidth-3, y: 475}),
-         new Platform({x: platformImageWidth*2 +100, y: 475})];
-     
-   
-    platforms.forEach((platform) => {
-        platform.draw()
-    }
-    )
-   
+const platforms = [
+    new Platform({x:platformImageWidth-3, y: 470}),
+    new Platform({x: platformImageWidth*2 +100, y: 470})
+];
 
-    platforms.forEach((platform) => {
-        platform.draw()
-   
-// Check for vertical collision between player and platform
-if (
-    player.position.y + player.height <= platform.position.y &&   // Player's bottom is above platform
-    player.position.y + player.height + player.velocity.y > platform.position.y &&  // Player is falling or moving downward
-    player.position.x + player.width > platform.position.x &&   // Player's right side is within platform's left side
-    player.position.x < platform.position.x + platform.width    // Player's left side is within platform's right side
-) {
-    // Collision detected: Player is landing on top of the platform
-    player.velocity.y = 0;  // Stop falling
-}
+
+platforms.forEach((platform) => {
+    platform.draw()
+    
+    if (
+        player.position.x + player.width > platform.position.x &&   // Player's right side is within platform's left side
+        player.position.x < platform.position.x + platform.width &&   // Player's left side is within platform's right side
+        player.position.y + player.height <= platform.position.y &&   // Player's bottom is above platform
+        player.position.y + player.height + player.velocity.y > platform.position.y +10  //small landing margin
+    ) {  
+        player.position.y = platform.position.y - player.height;  // Set player on top of platform
+        player.velocity.y = 0;  // Stop falling
+    }
 });
+
 

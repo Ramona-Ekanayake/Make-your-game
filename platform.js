@@ -30,7 +30,7 @@ class Platform {
         } else { 
             this.position.x += velocity
         }
-        this.div.style.transform = `translate(${this.position.x}px, ${this.position.y}px)`;
+        // this.div.style.transform = `translate(${this.position.x}px, ${this.position.y}px)`;
     }
 }
 

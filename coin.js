@@ -24,7 +24,7 @@ class Coin {
 
     scrollCoin(velocity) {
         this.position.x -= velocity;  // Move the coin in sync with the platform's X movement
-        this.div.style.transform = `translate(${this.position.x}px, ${this.position.y}px)`;
+        // this.div.style.transform = `translate(${this.position.x}px, ${this.position.y}px)`;
     }
 }
  

@@ -10,7 +10,9 @@ import { updateLivesCount, updateScoreCount, updateCoinsCount } from './scoreBoa
 import { resetGame } from './stateManager.js';
 
 export let player
+const world = document.getElementById('world')
 let leftScrollLimit = 0
+export let positionBackX = 0
 
 class Player {
     constructor(){
@@ -113,7 +115,11 @@ class Player {
 
 
             if(this.position.x >= window.innerWidth / 2){ // Scroll the background and platforms instead of the player
+                positionBackX -= this.velocity.x
+                world.style.transform = `translateX(${positionBackX}px)`;
+                
                 scrollBackground(Math.floor(this.velocity.x) / 2, scrollDirection) //Scroll the background at half the speed of the player to create a parallax effect
+                
                 platforms.forEach((platform) => {
                     platform.scrollPlatform(this.velocity.x, scrollDirection) // Scroll the platforms with the player speed to simulate the player moving
                 })
@@ -209,6 +215,9 @@ class Player {
 }
 
 export const initPlayer = () => {
+    positionBackX = 0
+    world.style.transform = `translateX(${positionBackX}px)`;
+
     player = new Player()
     player.draw()
 }

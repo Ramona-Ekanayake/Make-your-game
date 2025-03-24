@@ -1,4 +1,3 @@
-
 import "./Background/scrollBackground.js";
 import {  stateManager, initState, runGame } from './stateManager.js';
 import { initSounds } from './sound.js';
@@ -12,8 +11,15 @@ import { initEnemies } from './enemy.js';
 import { initPlayer, player } from './player.js';
 import { initPlayerMovement } from './playerMovement.js';
 
+const platformsDiv = document.getElementById('platformsDiv')
+const coinsDiv = document.getElementById('coinsDiv')
+const enemiesDiv = document.getElementById('enemiesDiv')
+
 export const init = () => {
     runGame()
+    // platformsDiv.style.transform = `translate(0px, 0px)`;
+    // coinsDiv.style.transform = `translate(0px, 0px)`;
+    // enemiesDiv.style.transform = `translate(0px, 0px)`;
     
     initSounds()
     initScoreBoard()

@@ -62,7 +62,7 @@ class Enemy {
             this.position.endX += velocity
             this.position.x += velocity
         }
-        this.draw()
+        // this.draw()
     }
 }
 

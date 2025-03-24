@@ -1,4 +1,8 @@
 const gravity = 0.5
+const world = document.getElementById('world')
+const platformsDiv = document.getElementById('platformsDiv')
+const coinsDiv = document.getElementById('coinsDiv')
+const enemiesDiv = document.getElementById('enemiesDiv')
 import { playSound } from './sound.js';
 import { coins } from './coin.js';
 import { showInitialMenu } from './menu.js';
@@ -12,7 +16,7 @@ import { resetGame } from './stateManager.js';
 
 export let player
 let leftScrollLimit = 0
-
+let positionBackX = 0
 class Player {
     constructor(){
         this.position = {
@@ -144,7 +148,14 @@ class Player {
 
 
             if(this.position.x >= window.innerWidth / 2){ // Scroll the background and platforms instead of the player
+                positionBackX -= this.velocity.x
+                world.style.transform = `translateX(${positionBackX}px)`;
+                // platformsDiv.style.transform = `translateX(${scrollX}px)`;
+                // enemiesDiv.style.transform = `translateX(${scrollX}px)`;
+                // coinsDiv.style.transform = `translateX(${scrollX}px)`;
+                
                 scrollBackground(Math.floor(this.velocity.x) / 2, scrollDirection) //Scroll the background at half the speed of the player to create a parallax effect
+                
                 platforms.forEach((platform) => {
                     platform.scrollPlatform(this.velocity.x, scrollDirection) // Scroll the platforms with the player speed to simulate the player moving
                 })

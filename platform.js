@@ -52,7 +52,7 @@ class Platform {
             this.position.x += velocity
         }
         // this.div.style.left = this.position.x + "px"
-        this.div.style.transform = `translate(${this.position.x}px, ${this.position.y}px)`;
+        // this.div.style.transform = `translate(${this.position.x}px, ${this.position.y}px)`;
     }
 }
 

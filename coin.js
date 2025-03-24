@@ -38,7 +38,7 @@ class Coin {
         // Coins should move along with the platform's X position
         this.position.x -= velocity;  // Move the coin in sync with the platform's X movement
         // this.div.style.left = this.position.x + "px"
-        this.div.style.transform = `translate(${this.position.x}px, ${this.position.y}px)`;
+        // this.div.style.transform = `translate(${this.position.x}px, ${this.position.y}px)`;
     }
 }
  
